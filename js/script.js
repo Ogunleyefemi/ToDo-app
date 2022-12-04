@@ -35,6 +35,29 @@ function displayTask(tasks){
     const eventList = $("#tasks");
     let htmlDisplay = "";
     Object.keys(tasks.task).forEach(function(key){
-
-    })
+        const contact = tasks.findTask(key);
+        htmlDisplay += "<li id=" + contact.id + ">" + contact.event + " " + contact.date + "</li>";
+      });
+      eventList.html(htmlDisplay);
+      console.log(displayTask);
+      
 }
+
+
+$(document).ready(function() {
+    // attachContactListeners();
+    $("form#form").submit(function(event) {
+      event.preventDefault();
+      const inputtedEvent = $("#event").val();
+      const inputtedDate = $("#dateInput").val();
+      const inputtedDescription = $("textarea").val();
+  
+      // to clear form after submission
+      $("#event").val("");
+      $("#dateInput").val("");
+      $("#textarea").val("");
+      let newTask = new Diary(inputtedEvent, inputtedDate, inputtedDescription);
+      noteBook.addTask(newTask);
+      displayTask(noteBook);
+    });
+  })
