@@ -39,13 +39,28 @@ function displayTask(tasks){
         htmlDisplay += "<li id=" + contact.id + ">" + contact.event + " " + contact.date + "</li>";
       });
       eventList.html(htmlDisplay);
-      console.log(displayTask);
-      
+}
+
+// function to display diary
+function showDiary(taskId){
+    const diary = noteBook.findTask(taskId);
+    $("#diary").show();
+    $(".taskTitle").html(diary.event);
+    $(".taskDate").html(diary.date);
+    $(".taskDescription").html(diary.description);
+}
+
+// function to add listener
+function eventListener(){
+    $("#tasks").on("click","li", function(){
+        showDiary(this.taskId);
+    });
 }
 
 
+
 $(document).ready(function() {
-    // attachContactListeners();
+    
     $("form#form").submit(function(event) {
       event.preventDefault();
       const inputtedEvent = $("#event").val();
@@ -56,8 +71,11 @@ $(document).ready(function() {
       $("#event").val("");
       $("#dateInput").val("");
       $("#textarea").val("");
+      
+      eventListener()
+      
       let newTask = new Diary(inputtedEvent, inputtedDate, inputtedDescription);
       noteBook.addTask(newTask);
       displayTask(noteBook);
     });
-  })
+})

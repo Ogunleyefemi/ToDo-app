@@ -32,7 +32,13 @@
             <h5 class="text-center my-3">Tasks</h5>
             <ul id="tasks">
             </ul>
+            <div id="diary">
+                <p>TASK : <span class="taskTitle"></span></p>
+                <p>DATE : <span class="taskDate"></span></p>
+                <p>DESCRIPTION : <span class="taskDescription"></span></p>
+            </div>
         </div>
+        
          
 
            <!-- Modal -->
@@ -57,10 +63,9 @@ aria-hidden="true"
     <div class="modal-body">
       <p>Task Title</p>
       <input type="text" class="form-control" name="" id="event" />
-      <div id="msg"></div>
       <br />
       <p>Due Date</p>
-      <input type="date" class="form-control" name="" id="dateInput" />
+      <input type="datetime-local" class="form-control" name="" id="dateInput" />
       <br />
       <p>Description</p>
       <textarea
