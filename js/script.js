@@ -49,18 +49,19 @@ function showDiary(taskId){
     $(".taskDate").html(diary.date);
     $(".taskDescription").html(diary.description);
 }
+console.log(showDiary);
 
 // function to add listener
 function eventListener(){
     $("#tasks").on("click","li", function(){
-        showDiary(this.taskId);
+        showDiary(this.id);
     });
 }
 
 
 
 $(document).ready(function() {
-    
+    eventListener();
     $("form#form").submit(function(event) {
       event.preventDefault();
       const inputtedEvent = $("#event").val();
@@ -71,8 +72,6 @@ $(document).ready(function() {
       $("#event").val("");
       $("#dateInput").val("");
       $("#textarea").val("");
-      
-      eventListener()
       
       let newTask = new Diary(inputtedEvent, inputtedDate, inputtedDescription);
       noteBook.addTask(newTask);
