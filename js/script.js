@@ -28,6 +28,7 @@ Todo.prototype.findTask = function(id) {
   };
 
   let noteBook = new Todo();
+  localStorage.setItem(noteBook);
 let person1 = new Diary("study", "03-10-2022", "study chapter 2");
 
 // UI LOGIC
@@ -74,6 +75,7 @@ $(document).ready(function() {
       $("#textarea").val("");
       
       let newTask = new Diary(inputtedEvent, inputtedDate, inputtedDescription);
+      localStorage.setItem(newTask);
       noteBook.addTask(newTask);
       displayTask(noteBook);
     });
